@@ -1,29 +1,38 @@
 <template>
   <v-app>
-    <v-app-bar app color="primary" dark>
-      <div class="d-flex align-center">
-        <v-img alt="Vuetify Logo" class="shrink mr-2" contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png" transition="scale-transition" width="40" />
+    <v-navigation-drawer v-model="drawer" app>
+      <MenuBarComponent />
+    </v-navigation-drawer>
 
-        <v-img alt="Vuetify Name" class="shrink mt-1 hidden-sm-and-down" contain min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png" width="100" />
-      </div>
+    <v-app-bar app>
+      <v-app-bar-nav-icon @click="drawer = !drawer" />
+      <v-toolbar-title>
+        {{ $route.meta?.title || '' }}
+      </v-toolbar-title>
     </v-app-bar>
 
     <v-main>
-      <router-view />
+      <v-container class="spacing-playground pa-6">
+        <router-view />
+      </v-container>
     </v-main>
   </v-app>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import MenuBarComponent from './shared/components/menu-bar/MenuBarComponent.vue'
 
 export default Vue.extend({
   name: 'App',
 
   data: () => ({
-    //
-  })
+    group: null,
+    drawer: false
+  }),
+
+  components: {
+    MenuBarComponent
+  }
 })
 </script>
