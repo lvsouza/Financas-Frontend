@@ -27,7 +27,6 @@ export default Vue.extend({
   name: 'App',
 
   data: () => ({
-    group: null,
     drawer: false
   }),
 

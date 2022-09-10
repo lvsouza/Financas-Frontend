@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-import { vuetify } from './shared/plugins/vuetify'
+import { vuetify } from './plugins'
 import { router } from './router'
 import './registerServiceWorker'
 import App from './App.vue'

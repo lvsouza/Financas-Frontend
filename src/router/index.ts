@@ -25,7 +25,7 @@ const routes: Array<RouteConfig> = [
   }
 ]
 
-export const router = new VueRouter({
+const router = new VueRouter({
   routes,
   mode: 'history',
   base: process.env.BASE_URL
@@ -35,3 +35,5 @@ router.beforeEach((to, _, next) => {
   document.title = to?.meta?.title ? `${to.meta.title} - Finanças` : 'Finanças'
   next()
 })
+
+export { router }
