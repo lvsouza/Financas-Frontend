@@ -11,7 +11,7 @@
           <v-btn v-if="$vuetify.breakpoint.xs" color="primary" to="/alunos/0" class="ml-2" link>
             <v-icon dark> mdi-plus </v-icon>
           </v-btn>
-          <v-btn v-else color="primary" link to="/alunos/novo" class="ml-2">
+          <v-btn v-else color="primary"  class="ml-2" @click="$feedback('result.message', 'warning')">
             Novo
           </v-btn>
         </v-toolbar>
@@ -79,12 +79,10 @@ export default Vue.extend({
     }
   },
   mounted() {
-    console.log(this.$environment)
-
     this.$dataSources.tiposDeInvestimentos.getAll()
       .then(result => {
         if (result instanceof Error) {
-          alert(result.message)
+          this.$feedback(result.message, 'error')
         } else {
           this.rows = result.data
         }
@@ -103,7 +101,7 @@ export default Vue.extend({
       this.$dataSources.tiposDeInvestimentos.deleteById(this.deleteId)
         .then(result => {
           if (result instanceof Error) {
-            alert(result.message)
+            this.$feedback(result.message, 'error')
           } else {
             this.rows = [...this.rows.filter((row) => row.id !== this.deleteId)]
           }

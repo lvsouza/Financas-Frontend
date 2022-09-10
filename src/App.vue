@@ -16,12 +16,15 @@
         <router-view />
       </v-container>
     </v-main>
+
+    <FeedbackComponent />
   </v-app>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import MenuBarComponent from './shared/components/menu-bar/MenuBarComponent.vue'
+import FeedbackComponent from './shared/components/feedback/FeedbackComponent.vue'
 
 export default Vue.extend({
   name: 'App',
@@ -31,7 +34,8 @@ export default Vue.extend({
   }),
 
   components: {
-    MenuBarComponent
+    MenuBarComponent,
+    FeedbackComponent
   }
 })
 </script>
