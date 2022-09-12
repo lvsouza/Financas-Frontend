@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-export type TConfirmationDialogTypes = 'delete' | 'confirmation';
+export type TConfirmationTypes = 'delete' | 'confirmation';
 
-export interface IConfirmationDialog {
+export interface IConfirmation {
   title: string;
   message: string;
   cancelText?: string;
@@ -11,8 +11,8 @@ export interface IConfirmationDialog {
   onConfirm?: Function;
 }
 
-export const addConfirmationEventListener = (callback: (confirm: IConfirmationDialog) => void): (() => void) => {
-  const handleEvent = (e: CustomEvent<IConfirmationDialog>) => {
+export const addConfirmationEventListener = (callback: (confirm: IConfirmation) => void): (() => void) => {
+  const handleEvent = (e: CustomEvent<IConfirmation>) => {
     callback(e.detail)
   }
 
@@ -21,9 +21,9 @@ export const addConfirmationEventListener = (callback: (confirm: IConfirmationDi
   return () => removeEventListener('CONFIRMATION_EVENT', handleEvent as any)
 }
 
-export function confirmation(message: IConfirmationDialog): void;
-export function confirmation(message: string, type: TConfirmationDialogTypes, onConfirm?: Function, onCancel?: Function): void;
-export function confirmation(message: string | IConfirmationDialog, type?: TConfirmationDialogTypes, onConfirm?: Function, onCancel?: Function): void {
+export function confirmation(message: IConfirmation): void;
+export function confirmation(message: string, type: TConfirmationTypes, onConfirm?: Function, onCancel?: Function): void;
+export function confirmation(message: string | IConfirmation, type?: TConfirmationTypes, onConfirm?: Function, onCancel?: Function): void {
   if (typeof message === 'object') {
     dispatchEvent(new CustomEvent('CONFIRMATION_EVENT', { detail: message }))
   } else {

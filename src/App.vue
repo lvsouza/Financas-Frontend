@@ -18,6 +18,7 @@
     </v-main>
 
     <FeedbackComponent />
+    <ConfirmationComponent />
   </v-app>
 </template>
 
@@ -25,17 +26,16 @@
 import Vue from 'vue'
 import MenuBarComponent from './shared/components/menu-bar/MenuBarComponent.vue'
 import FeedbackComponent from './shared/components/feedback/FeedbackComponent.vue'
+import ConfirmationComponent from './shared/components/confirmation/ConfirmationComponent.vue'
 
 export default Vue.extend({
-  name: 'App',
-
   data: () => ({
     drawer: false
   }),
-
   components: {
     MenuBarComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    ConfirmationComponent
   }
 })
 </script>

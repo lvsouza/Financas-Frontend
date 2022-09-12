@@ -18,11 +18,6 @@ export default Vue.extend({
     })[],
     removeListener: null as (null | (() => void))
   }),
-  watch: {
-    feedbacks() {
-      console.log(this.feedbacks)
-    }
-  },
   methods: {
     handleAdd(feedback: IFeedback) {
       const id = uuid()
