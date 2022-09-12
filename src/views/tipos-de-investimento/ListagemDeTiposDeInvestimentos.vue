@@ -1,6 +1,8 @@
 <template>
   <v-container>
-    <v-data-table :items="rows" class="elevation-3" :headers="headers">
+    <v-data-table :items="rows" class="elevation-3" :headers="headers" disable-sort locale="pt-Br" :page="1"
+      :items-per-page="$environment.LIMITE_DE_LINHAS"
+      :footer-props="{'disable-items-per-page':true, 'items-per-page-options':[]}">
       <template v-slot:top>
         <v-toolbar flat>
           <v-text-field prepend-inner-icon="mdi-magnify" v-model="searchText" placeholder="Buscar registros..."
@@ -36,6 +38,7 @@ import { IListagemTipoDeInvestimento } from '../../shared/services/data-sources/
 
 export default Vue.extend({
   data: () => ({
+    totalCount: 0,
     searchText: '',
     rows: [] as IListagemTipoDeInvestimento[],
 
@@ -57,6 +60,7 @@ export default Vue.extend({
         if (result instanceof Error) {
           this.$feedback(result.message, 'error')
         } else {
+          this.totalCount = result.totalCount
           this.rows = result.data
         }
       })

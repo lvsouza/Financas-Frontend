@@ -12,16 +12,16 @@ const routes: Array<RouteConfig> = [
     meta: { title: 'Página inicial' }
   },
   {
-    name: 'tipos-de-investimentos',
     path: '/tipos-de-investimentos',
-    component: () => import('../views/tipos-de-investimento/ListagemDeTiposDeInvestimentos.vue'),
-    meta: { title: 'Tipos de investimentos' }
+    meta: { title: 'Tipos de investimentos' },
+    name: 'listagem-de-tipos-de-investimentos',
+    component: () => import('../views/tipos-de-investimento/ListagemDeTiposDeInvestimentos.vue')
   },
   {
-    name: 'tipos-de-investimentos',
     path: '/tipos-de-investimentos/:id',
-    component: () => import('../views/tipos-de-investimento/DetalheDeTiposDeInvestimentos.vue'),
-    meta: { title: 'Tipos de investimentos' }
+    name: 'detalhe-de-tipo-de-investimento',
+    meta: { title: 'Tipos de investimentos' },
+    component: () => import('../views/tipos-de-investimento/DetalheDeTiposDeInvestimentos.vue')
   }
 ]
 
