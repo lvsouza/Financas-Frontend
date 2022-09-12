@@ -1,7 +1,7 @@
 <template>
   <div>
-    <SnackBar v-for="feedback in feedbacks" :key="feedback.id" :id="feedback.id" :text="feedback.message"
-      :type="feedback.type" :bottom="40*2" />
+    <SnackBar v-for="(feedback, index) in feedbacks" :key="feedback.id" :id="feedback.id" :text="feedback.message"
+      :type="feedback.type" :top="60 * (index)" />
   </div>
 </template>
 
@@ -28,7 +28,7 @@ export default Vue.extend({
       const id = uuid()
 
       setTimeout(() => feedback.onClose?.(), 5000)
-      setTimeout(() => this.handleRemove(id), 5500)
+      setTimeout(() => this.handleRemove(id), 5100)
 
       this.feedbacks.push({ ...feedback, id })
     },
